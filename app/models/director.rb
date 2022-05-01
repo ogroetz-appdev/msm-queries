@@ -12,4 +12,6 @@
 #
 class Director < ApplicationRecord
 
+  
+
 end

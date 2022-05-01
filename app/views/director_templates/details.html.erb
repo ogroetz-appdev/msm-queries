@@ -1,0 +1,45 @@
+<h1>Director #<%= @id %> details</h1>
+
+<div style="border-bottom: 2px solid lightgray;"><a href="/directors">Go back</a>  |  <a href="/delete_director/<%= @id %>">Delete Director</a></div>
+
+
+<div style="border-bottom: 2px solid lightgray;">
+  <p>Name</p>
+  <p style="text-indent: 30px;"><%= @director.name %></p>
+  <p>Dob</p>
+  <p style="text-indent: 30px;"><%= @director.dob %></p>
+  <p>Bio</p>
+  <p style="text-indent: 30px;"><%= @director.bio %></p>
+  <p>Image</p>
+  <p style="text-indent: 30px;"><img src ="http://robohash.org/<%= @director.image %>"></p>
+  <p>Created at</p>
+  <p style="text-indent: 30px;"><%= time_ago_in_words(@director.created_at) %> ago</p>
+  <p>Updated at</p>
+  <p style="text-indent: 30px;"><%= time_ago_in_words(@director.updated_at) %> ago</p>
+</div>
+
+<div>
+  <h1>Filmography</h1>
+
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th></th>
+    </tr>
+    <% @director_films.each do |film| %>
+      <tr>
+        <td><%= film.id %></td>
+        <td><img src="http://robohash.org/<%= film.image %>"></td>
+        <td><%= film.title %></td>
+        <td><%= film.year %></td>
+        <td><%= @director.name %></td>
+        <td><a href="/movies/<%= film.id %>">Show details</a></td>
+      </tr>
+    <% end %>
+    
+  </table>
+</div>
