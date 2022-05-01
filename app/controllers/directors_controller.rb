@@ -42,4 +42,11 @@ class DirectorsController < ApplicationController
     render ({ :template => "director_templates/details.html.erb"})
   end
 
+  def delete
+    @id = params.fetch("id").to_i
+    d = Director.where( :id => @id).first
+    d.destroy
+    redirect_to ({ :action => "index"})
+  end
+
 end

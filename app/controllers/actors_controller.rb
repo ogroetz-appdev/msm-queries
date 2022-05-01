@@ -19,4 +19,12 @@ p @actor_characters
     render ({ :template => "/actor_templates/details.html.erb"})
   end
 
+  def delete
+    @id = params.fetch("id").to_i
+    d = Actor.where( :id => @id).first
+    d.destroy
+    # flash[:notice] = "Actor was deleted."
+    redirect_to ({ :action => "index"}), :notice => "Actor Deleted"
+  end
+
 end

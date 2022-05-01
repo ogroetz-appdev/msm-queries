@@ -11,4 +11,11 @@ class MoviesController < ApplicationController
     render ({ :template => "/movie_templates/details.html.erb"})
   end
 
+  def delete
+    @id = params.fetch("id").to_i
+    d = Movie.where( :id => @id).first
+    d.destroy
+    redirect_to ({ :action => "index"})
+  end
+
 end
