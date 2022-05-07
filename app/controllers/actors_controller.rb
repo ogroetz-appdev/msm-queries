@@ -11,9 +11,9 @@ class ActorsController < ApplicationController
     @actor_characters = Character.where({ :actor_id => @id})
 p @actor_characters
 
-    @actor_films = []
+    # @actor_films = []
     @actor_characters.each do |character|
-      @actor_films.push(Movie.where( :id => character.movie_id).at(0))
+      # @actor_films.push(Movie.where( :id => character.movie_id).at(0))
     end
 
     render ({ :template => "/actor_templates/details.html.erb"})

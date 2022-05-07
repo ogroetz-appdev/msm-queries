@@ -29,16 +29,17 @@
       <th>Character name</th>
       <th></th>
     </tr>
-    <% @actor_films.each do |film| %>
+     <% @actor_characters.each do |character| %>
+     <% p character %>
       <tr>
+        <% film = Movie.where( :id => character.movie_id).at(0) %>
         <td><%= film.title %></td>
         <td><%= film.year %></td>
+        <% director = Director.where( :id => film.director_id).at(0) %>
         <td>
-          <% director = Director.where({ :id => film.director_id}).at(0) %>
           <%= director.name %>
         </td>
         <td>
-          <% character = Character.where({ :movie_id => film.id, :actor_id => @id}).at(0) %>
           <%= character.name %>
         </td>
         <td><a href="/movies/<%= film.id %>">Show details</a></td>
